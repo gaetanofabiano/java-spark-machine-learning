@@ -34,7 +34,7 @@ public class JavaAssociationRules {
     ));
 
     AssociationRules arules = new AssociationRules()
-      .setMinConfidence(0.8);
+      .setMinConfidence(0.1);
     JavaRDD<AssociationRules.Rule<String>> results = arules.run(freqItemsets);
 
     for (AssociationRules.Rule<String> rule : results.collect()) {

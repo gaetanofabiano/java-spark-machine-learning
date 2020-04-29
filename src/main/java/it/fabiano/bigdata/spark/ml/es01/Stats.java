@@ -53,6 +53,8 @@ public class Stats {
 		
 		MultivariateStatisticalSummary summary = Statistics.colStats(rdds.rdd());
 		
+		
+		
 		System.out.println("mean: "+summary.mean());
 		System.out.println("variance: "+summary.variance());
 		System.out.println("numNonZeros: "+summary.numNonzeros());

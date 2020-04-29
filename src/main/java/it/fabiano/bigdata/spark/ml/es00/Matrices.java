@@ -46,6 +46,7 @@ public class Matrices {
 	    
 	    
 	    //https://en.wikipedia.org/wiki/Covariance_matrix
+	   
 	    Matrix covariance = matrix1.computeCovariance();
 	    System.out.println("covariance Cols: "+covariance.numCols());
 	    System.out.println("covariance of Rows: "+covariance.numRows());
