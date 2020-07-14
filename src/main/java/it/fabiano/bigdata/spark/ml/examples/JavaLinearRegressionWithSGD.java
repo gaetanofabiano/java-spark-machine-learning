@@ -54,28 +54,28 @@ public class JavaLinearRegressionWithSGD {
     });
     parsedData.cache();
 
-    // Building the model
-    int numIterations = 100;
-    double stepSize = 0.00000001;
-    LinearRegressionModel model =
-      LinearRegressionWithSGD.train(JavaRDD.toRDD(parsedData), numIterations, stepSize);
-
-    // Evaluate model on training examples and compute training error
-    JavaPairRDD<Double, Double> valuesAndPreds = parsedData.mapToPair(point ->
-      new Tuple2<>(model.predict(point.features()), point.label()));
-
-    double MSE = valuesAndPreds.mapToDouble(pair -> {
-      double diff = pair._1() - pair._2();
-      return diff * diff;
-    }).mean();
-    System.out.println("training Mean Squared Error = " + MSE);
-
-    // Save and load model
-    model.save(sc.sc(), "target/tmp/javaLinearRegressionWithSGDModel");
-    LinearRegressionModel sameModel = LinearRegressionModel.load(sc.sc(),
-      "target/tmp/javaLinearRegressionWithSGDModel");
-    // $example off$
-
-    sc.stop();
+//    // Building the model
+//    int numIterations = 100;
+//    double stepSize = 0.00000001;
+//    LinearRegressionModel model =
+//      LinearRegressionWithSGD.train(JavaRDD.toRDD(parsedData), numIterations, stepSize);
+//
+//    // Evaluate model on training examples and compute training error
+//    JavaPairRDD<Double, Double> valuesAndPreds = parsedData.mapToPair(point ->
+//      new Tuple2<>(model.predict(point.features()), point.label()));
+//
+//    double MSE = valuesAndPreds.mapToDouble(pair -> {
+//      double diff = pair._1() - pair._2();
+//      return diff * diff;
+//    }).mean();
+//    System.out.println("training Mean Squared Error = " + MSE);
+//
+//    // Save and load model
+//    model.save(sc.sc(), "target/tmp/javaLinearRegressionWithSGDModel");
+//    LinearRegressionModel sameModel = LinearRegressionModel.load(sc.sc(),
+//      "target/tmp/javaLinearRegressionWithSGDModel");
+//    // $example off$
+//
+//    sc.stop();
   }
 }

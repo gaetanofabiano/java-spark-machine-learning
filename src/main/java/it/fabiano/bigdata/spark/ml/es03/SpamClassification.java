@@ -13,11 +13,12 @@ import org.apache.spark.mllib.feature.HashingTF;
 import org.apache.spark.mllib.linalg.Vector;
 import org.apache.spark.mllib.regression.LabeledPoint;
 /**
-* Java-Spark-Training-Course
+* Java-Spark-Machine-Learning-Course
 *
 * @author  Gaetano Fabiano
-* @version 1.0.0
+* @version 1.1.0
 * @since   2019-07-19 
+* @updated 2020-07-01 
 */
 public final class SpamClassification {
 
@@ -50,9 +51,9 @@ public final class SpamClassification {
 		trainingData.cache(); // Cache data since Logistic Regression is an iterative algorithm.
 
 		// Create a Logistic Regression learner which uses the LBFGS optimizer.
-		LogisticRegressionWithSGD lrLearner = new LogisticRegressionWithSGD();
+		//LogisticRegressionWithSGD lrLearner = new LogisticRegressionWithSGD();
 		// Run the actual learning algorithm on the training data.
-		LogisticRegressionModel model = lrLearner.run(trainingData.rdd());
+		//LogisticRegressionModel model = lrLearner.run(trainingData.rdd());
 
 		// Test on a positive example (spam) and a negative one (ham).
 		// First apply the same HashingTF feature transformation used on the training data.
@@ -61,8 +62,8 @@ public final class SpamClassification {
 		Vector negTestExample =
 				tf.transform(Arrays.asList("Hi Dad, I started studying Spark with Gaetano ...".split(" ")));
 		// Now use the learned model to predict spam/ham for new emails.
-		System.out.println("Prediction for positive test example: " + model.predict(posTestExample));
-		System.out.println("Prediction for negative test example: " + model.predict(negTestExample));
+//		System.out.println("Prediction for positive test example: " + model.predict(posTestExample));
+//		System.out.println("Prediction for negative test example: " + model.predict(negTestExample));
 
 		sc.close();
 		sc.stop();

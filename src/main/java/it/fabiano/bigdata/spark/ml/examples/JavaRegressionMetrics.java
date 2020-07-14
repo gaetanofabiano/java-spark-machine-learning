@@ -48,36 +48,36 @@ public class JavaRegressionMetrics {
     parsedData.cache();
 
     // Building the model
-    int numIterations = 100;
-    LinearRegressionModel model = LinearRegressionWithSGD.train(JavaRDD.toRDD(parsedData),
-      numIterations);
-
-    // Evaluate model on training examples and compute training error
-    JavaPairRDD<Object, Object> valuesAndPreds = parsedData.mapToPair(point ->
-      new Tuple2<>(model.predict(point.features()), point.label()));
-
-    // Instantiate metrics object
-    RegressionMetrics metrics = new RegressionMetrics(valuesAndPreds.rdd());
-
-    // Squared error
-    System.out.format("MSE = %f\n", metrics.meanSquaredError());
-    System.out.format("RMSE = %f\n", metrics.rootMeanSquaredError());
-
-    // R-squared
-    System.out.format("R Squared = %f\n", metrics.r2());
-
-    // Mean absolute error
-    System.out.format("MAE = %f\n", metrics.meanAbsoluteError());
-
-    // Explained variance
-    System.out.format("Explained Variance = %f\n", metrics.explainedVariance());
-
-    // Save and load model
-    model.save(sc.sc(), "target/tmp/LogisticRegressionModel");
-    LinearRegressionModel sameModel = LinearRegressionModel.load(sc.sc(),
-      "target/tmp/LogisticRegressionModel");
-    // $example off$
-
-    sc.stop();
+//    int numIterations = 100;
+//    LinearRegressionModel model = LinearRegressionWithSGD.train(JavaRDD.toRDD(parsedData),
+//      numIterations);
+//
+//    // Evaluate model on training examples and compute training error
+//    JavaPairRDD<Object, Object> valuesAndPreds = parsedData.mapToPair(point ->
+//      new Tuple2<>(model.predict(point.features()), point.label()));
+//
+//    // Instantiate metrics object
+//    RegressionMetrics metrics = new RegressionMetrics(valuesAndPreds.rdd());
+//
+//    // Squared error
+//    System.out.format("MSE = %f\n", metrics.meanSquaredError());
+//    System.out.format("RMSE = %f\n", metrics.rootMeanSquaredError());
+//
+//    // R-squared
+//    System.out.format("R Squared = %f\n", metrics.r2());
+//
+//    // Mean absolute error
+//    System.out.format("MAE = %f\n", metrics.meanAbsoluteError());
+//
+//    // Explained variance
+//    System.out.format("Explained Variance = %f\n", metrics.explainedVariance());
+//
+//    // Save and load model
+//    model.save(sc.sc(), "target/tmp/LogisticRegressionModel");
+//    LinearRegressionModel sameModel = LinearRegressionModel.load(sc.sc(),
+//      "target/tmp/LogisticRegressionModel");
+//    // $example off$
+//
+//    sc.stop();
   }
 }
